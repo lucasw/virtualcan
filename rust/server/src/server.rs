@@ -64,7 +64,8 @@ enum ServerEvent {
 async fn server_prog(port: u16) -> std::io::Result<()> {
     // let ip = std::net::Ipv6Addr::UNSPECIFIED;
     // let addr = std::net::SocketAddrV6::new(ip, port, 0, 0);
-    let ip = std::net::Ipv4Addr::UNSPECIFIED;
+    // let ip = std::net::Ipv4Addr::UNSPECIFIED;
+    let ip = std::net::Ipv4Addr::LOCALHOST;
     let addr = std::net::SocketAddrV4::new(ip, port);
     info!("Starting virtual can server at: {:?}", addr);
     let std_listener = std::net::TcpListener::bind(addr)?;
