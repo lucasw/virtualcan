@@ -50,7 +50,8 @@ impl Peer {
     fn send_out(&mut self, source_port: u32, msg: Bytes) {
         trace!("Peer sendout msg {:?}", msg);
         if source_port != self.port_id {
-            self.tx.unbounded_send(msg);
+            let _ = self.tx.unbounded_send(msg);
+            // println!("unbounded port: {rv:?}");
         }
     }
 }
@@ -160,7 +161,7 @@ async fn peer_prog(
             optional_item = emit_rx.next() => {
                 if let Some(item) = optional_item {
                     trace!("BROADCAST: {:?}", item);
-                    packet_sink.send(item).await;
+                    packet_sink.send(item).await?;
                 } else {
                     info!("No messages to broadcast.");
                     break;

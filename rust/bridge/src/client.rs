@@ -57,7 +57,7 @@ where
 
 #[cfg(target_os = "linux")]
 pub mod socketcan {
-    use super::{run_bridging, CanDevice, VirtualCanBus};
+    use super::{run_bridging, VirtualCanBus};
 
     pub fn bridge_can0(host: &str, port: u16, can_device: &str) {
         loop {

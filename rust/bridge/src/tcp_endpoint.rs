@@ -64,7 +64,8 @@ impl CanDevice for VirtualCanBus {
     }
 
     fn close(&self) {
-        self.socket.shutdown(std::net::Shutdown::Both);
+        let rv = self.socket.shutdown(std::net::Shutdown::Both);
+        println!("shutdown: {rv:?}");
     }
 }
 
