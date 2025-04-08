@@ -12,6 +12,7 @@ class SyncTcpClient:
     _FMT = ">I"
 
     def __init__(self, host="localhost", port=18881):
+        print(f"creating connection to host: {host} on port: {port}")
         self._socket = socket.create_connection((host, port))
         self._socket.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
         self._rx_queue = queue.Queue()
