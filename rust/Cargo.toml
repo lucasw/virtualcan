@@ -1,5 +1,8 @@
 [workspace]
-members = ["server", "bridge"]
+members = [
+    "bridge",
+    "server",
+]
 
 [workspace.package]
 edition = "2021"
